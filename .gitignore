@@ -1,0 +1,5 @@
+*.out
+*.dsYM
+*.cph/
+*.vscode
+*.xcodeproj
