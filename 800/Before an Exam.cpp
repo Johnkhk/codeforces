@@ -30,14 +30,44 @@ const ld EPS = 1e-9;
 
 
 void solve() {
-    int w;
-    cin >> w;
-    if(w%2==0 && w!=2) {
-        cout << "YES";
-    } else {
-        cout << "NO";
-    }
+    int days, hours;
+    cin >> days >> hours;
+    int curtime = 0;
+    bool achieve = true;
+    vector<int> vec;
 
+    for (int i=0; i<days; i++) {
+        int mintime, maxtime;
+        cin >> mintime >> maxtime;
+        if(curtime + maxtime <= hours) {
+            curtime+=maxtime;
+            vec.push_back(maxtime);
+        } 
+        // else {
+        //     vec.push_back(hours-curtime);
+        // }
+        else if (hours-curtime >= mintime && hours-curtime<=maxtime) {
+            vec.push_back(hours-curtime);
+            curtime+=hours-curtime;
+        }
+        else {
+            achieve = false;
+        }
+        
+    }
+    if(!achieve || curtime!=hours) {
+        cout << "NO\n";
+    } else {
+        cout << "YES\n";
+        for(auto a: vec) cout<<a<<" ";
+    }
+    // cout<< curtime;
+    // if (curtime==hours) {
+    //     cout << "YES\n";
+    //     for(auto a: vec) cout<<a<<" ";
+    // } else {
+    //     cout << "NO\n";
+    // }
 }
 
 int main() {
