@@ -27,16 +27,41 @@ const ll MOD = 1e9 + 7;
 const ll INF = 1e9;
 const ld EPS = 1e-9;
 
+bool check(ll tmp) {
+    int num_f = 0;
+    int num_s = 0;
 
+    while (tmp) {
+        if (tmp%10==4) {
+            num_f++;
+        } else {
+            num_s++;
+        }
+        tmp/=10;
+    }
+
+    return num_f==num_s;
+}
 
 void solve() {
-    int w;
-    cin >> w;
-    if(w%2==0 && w!=2) {
-        cout << "YES";
-    } else {
-        cout << "NO";
+    ll n;
+    cin >> n;
+    queue <ll> q;
+    q.push(0);
+
+
+    while(!q.empty()) {
+        ll m = q.front();
+        q.pop();
+        if(m>=n && check(m)) {
+            cout<<m;
+            return;
+        }
+
+        q.push(m*10 +4);
+        q.push(m*10 +7);
     }
+    return;
 
 }
 
