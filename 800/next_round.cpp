@@ -1,23 +1,24 @@
-#include <bits/stdc++.h>
 // #include "./stdc++.h"
-
+#include <bits/stdc++.h>
 
 using namespace std;
 
 
 void solve() {
-    int n;
-    cin >> n;
-    int a,b,c;
+    int n, k;
+    cin >> n >> k;
     int res=0;
+    vector<int> scores(n);
     for(int i=0;i<n;i++) {
-        cin >> a >> b >> c;
-
-        if (a+b+c >=2) {
+        cin >> scores[i];
+    }
+    int kth_score = scores[k-1];
+    for (int i=0;i<n;i++) {
+        if (scores[i] >= kth_score && scores[i] > 0) {
             res++;
         }
     }
-    cout << res;
+    cout<<res;
 }
 
 int main() {
